@@ -8,6 +8,12 @@ import util.*;
 
 public class MainPredictor {
 	
+	/*
+	 * Example run:
+	 * java -cp XXX.jar examples.MainPredictor CfaPredictor/sample_data/schema.txt \
+	 * CfaPredictor/sample_data/schema.txt
+	 */
+	
 	public static void main(String[] args){
 		
 		long epochLenMs = 1000*60;
@@ -16,18 +22,16 @@ public class MainPredictor {
 		
 		int start = 0; int stride = (int) Math.pow(10, 5);
 
-		String filename = "/Users/junchenjiang/Documents/research/ddn-controller/"
-				+ "data/datasets/video-viacom/format-dump1.viacom.fl.txt";
-		/* Example line in format-dump1.viacom.fl.txt:
-		 * 1417527044750   0.0     1200.0  691.0   20115   95649   229     5       
-		 * 166     WIN     eVod    Practically Useful: Scooter_1051673     Fl      
+		String filename = args[0];
+		/* Example line:
+		 * 1417527044750   0.0     1200.0  691.0   20115   95649   229     5      \ 
+		 * 166     WIN     eVod    Practically Useful: Scooter_1051673     Fl     \ 
 		 * 1700.0  Resource-LEVEL3
 		 */
-		String schemeFilename = "/Users/junchenjiang/Documents/research/ddn-controller/"
-				+ "data/datasets/schema/format-schema-viacom.txt";
-		/* Example line in format-schema-viacom.txt:
-		 * Time	BufRate	AvgBitrate	JoinTime	Asn	City	Country	ConnType	State	
-		 * Os	Liveorvod	ObjectId	PlayerType	InitBitrate	InitCdn
+		String schemeFilename = args[1];
+		/* Example line:
+		 * Time	BufRate	AvgBitrate	JoinTime	Asn	City	Country	ConnType	\
+		 * State	Os	Liveorvod	ObjectId	PlayerType	InitBitrate	InitCdn
 		 */
 		
 		FastReader r = new FastReader(filename);
