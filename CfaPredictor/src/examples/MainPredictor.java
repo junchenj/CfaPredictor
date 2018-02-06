@@ -10,7 +10,8 @@ public class MainPredictor {
 	
 	/*
 	 * Example run:
-	 * java -cp XXX.jar examples.MainPredictor CfaPredictor/sample_data/schema.txt \
+	 * java -cp CfaPredictor/jars/CfaPredictor.jar examples.MainPredictor \
+	 * CfaPredictor/sample_data/data.txt \
 	 * CfaPredictor/sample_data/schema.txt
 	 */
 	
@@ -22,7 +23,7 @@ public class MainPredictor {
 		
 		int start = 0; int stride = (int) Math.pow(10, 5);
 
-		String filename = args[0];
+		String dataFilename = args[0];
 		/* Example line:
 		 * 1417527044750   0.0     1200.0  691.0   20115   95649   229     5      \ 
 		 * 166     WIN     eVod    Practically Useful: Scooter_1051673     Fl     \ 
@@ -34,7 +35,7 @@ public class MainPredictor {
 		 * State	Os	Liveorvod	ObjectId	PlayerType	InitBitrate	InitCdn
 		 */
 		
-		FastReader r = new FastReader(filename);
+		FastReader r = new FastReader(dataFilename);
 		SchemaReader s = new SchemaReader(schemeFilename);
 		Map<Integer, List<UnitInstance>> epochToInstances = 
 				new HashMap<Integer, List<UnitInstance>>();
